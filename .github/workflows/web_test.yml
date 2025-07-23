@@ -1,0 +1,40 @@
+name: Run Web UI Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+        with:
+          chromedriver-version: 'latest'
+
+      - name: Grant execute permissions for Gradlew
+        run: chmod +x ./gradlew
+
+      - name: Run Tests
+        run: ./gradlew clean test
+
+      - name: Upload Test Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: gradle -test-report
+          path: build/reports/tests/test
