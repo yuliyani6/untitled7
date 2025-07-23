@@ -23,23 +23,23 @@ jobs:
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v1
 
-      - name: Set permission
+      - name: Give permission to Gradle
         run: chmod +x ./gradlew
 
       - name: Run UI Tests
-        run: ./gradlew test
-  - name: Upload Cucumber HTML Report
-    uses: actions/upload-artifact@v4
-    if: always()
-    with:
-      name: cucumber-html-report
-      path: target/web-report.html
+        run: ./gradlew clean test
 
-  - name: Upload Cucumber JSON Report
-    uses: actions/upload-artifact@v4
-    if: always()
-    with:
-      name: cucumber-json-report
-      path: target/web-report.json
+      - name: Upload Cucumber HTML Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cucumber-html-report
+          path: target/web-report.html
 
+      - name: Upload Cucumber JSON Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cucumber-json-report
+          path: target/web-report.json
 
