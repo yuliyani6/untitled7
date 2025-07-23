@@ -1,12 +1,18 @@
 package stepdefinitions;
 
+
 import hooks.Hooks;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.LoginPage;
-import org.openqa.selenium.WebDriver;
+
 import java.time.Duration;
+
 import static org.junit.Assert.assertTrue;
 
 public class LoginSteps {

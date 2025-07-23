@@ -14,10 +14,6 @@ public class LoginPage {
     By password = By.id("password");
     By loginButton = By.id("login-button");
 
-    public void open() {
-        driver.get("https://www.saucedemo.com/");
-    }
-
     public void inputUsername(String user) {
         driver.findElement(username).sendKeys(user);
     }
@@ -30,7 +26,4 @@ public class LoginPage {
         driver.findElement(loginButton).click();
     }
 
-    public boolean isOnProductsPage() {
-        return driver.getCurrentUrl().contains("inventory");
-    }
 }
