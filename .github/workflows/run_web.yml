@@ -38,9 +38,3 @@ jobs:
           path: build/reports/tests/test
 
 
-      - name: Deploy to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          personal_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/reports
